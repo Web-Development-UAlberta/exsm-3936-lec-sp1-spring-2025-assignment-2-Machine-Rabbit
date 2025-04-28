@@ -56,9 +56,12 @@ async function main() {
       this._isSquare = value;
     }
 
-    Contain(){
-
-    }
+    /* Contain(){
+      let width = myShape.width;
+      let length = myShape.length;
+      let container = new Rectangle(length, width);
+      output (`The Rectangle is contained within a square with an area of ${container.area}units.`);
+    } */
   }
   class Triangle extends AbstractShape{
     constructor(base, height){
@@ -66,7 +69,7 @@ async function main() {
       this.base = base;
       this.height = height;
       this.color = color;
-      this.perimeter = base + base + base; //FIX PROBLEM
+      this.perimeter = base + base + base; //FIX PROBLEM with sides
       this.area = (base*height)/2;
     }
     //Getters
@@ -89,9 +92,9 @@ async function main() {
     set height(value){
       this._height = value;
     }
-    Contain(){
+    /* Contain(){
 
-    }
+    } */
   }
   class Circle extends AbstractShape{
     constructor(radius, circumference){
