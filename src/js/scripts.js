@@ -1,10 +1,10 @@
 async function main() {
   class AbstractShape {
     constructor(color, perimeter, area){
-      if(new.target===AbstractShape){
+      if(new.target === AbstractShape){
         throw new Error ("Can't instantiage Abstract Class Abstract Shape");
       }
-      color = "string";
+      this.color = color;
       this.perimeter = perimeter;
       this.area = area;
     }
@@ -141,26 +141,73 @@ async function main() {
     constructor(side){
       super(color, perimeter, area);
       this.side = side;
+      this.apothem = side*(1.732/2);
       this.color = color;
-      this.perimeter = side*6;
+      this.perimeter = (side*6);
+      this.area = this.apothem*(this.perimeter/2);
     }
+    //Getters
     get side (){
       return this._side;
     }
+    get apothem (){
+      return this._apothem;
+    }
     get color(){
       return this._color;
+    }
+    //Setters
+    set color (value){
+      this._color = value;
+    }
+    set side (value){
+      this._side = value;
+    }
+    set apothem(value){
+      this._apothem = value;
     }
     Contain(){
       
     }
   }
-  //... ADD HEXAGON 
+  //CREATE MENU
+  /* let color;
+  let perimeter;
+  let area;
+  const shapeSelector = await input("Select a Shape to Create: ");
+  for(let i = 0; i < shapeSelector; i++){
+    switch(shapeSelector){
+      case '1':
+        const length = parseInt(await input("Length? "));
+        const width = parseInt(await input("Width? "));
+        myShape = new Rectangle(color, length, width);
+        output(`My ${myShape.color} Rectangle is ${myShape.perimeter} units around, and has an area of ${myShape.area}`)
+        break;
+      case '2':
+        const base = await input("Base? ");
+        const height = await input("Height? ");
+        myShape = new Triangle(base, height);
+        break;
+      case '3':
+        myShape = new Circle(radius);
+        break;
+      case '4':
+        myShape = new Hexagon(side);
+        break;
+      case '0':
+        output ('Exit Message');
+      default:
+        output("Selection Invalid, Try again.");
+        continue; 
+    }*/
+  //... TESTERS
   let color;
   let perimeter;
   let area;
   let myShape = new Rectangle(10, 10);
   let myShape1 = new Triangle(10, 10);
   let myShape2 = new Circle(8);
+  let myShape3 = new Hexagon (10);
   output(`Testing rectangle perimeter: ${myShape.perimeter} units.`);
   output(`Testing rectangle area: ${myShape.area} units.`);
   output(`Testing rectangle length: ${myShape.length} units.`);
@@ -177,4 +224,8 @@ async function main() {
   output(`Testing circle radius: ${myShape2.radius} units.`);
   output(`Testing circle diameter: ${myShape2.diameter} units.`);
   output(`Testing circle circumference: ${myShape2.circumference} units.`);
+  //...
+  output(`Testing Hexagon perimeter: ${myShape3.perimeter} units.`);
+  output(`Testing Hexagon area: ${myShape3.area} units.`);
+  output(`Testing Hexagon apothem: ${myShape3.apothem} units`)
 }
