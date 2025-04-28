@@ -12,7 +12,7 @@ async function main() {
       throw new Error ('Abstract method Contain() must be implemented')
     }
   }
-  class Rectangle extends AbstractShape{ //ADD isSquare
+  class Rectangle extends AbstractShape{
     constructor(length, width, isSquare){
       super(color, perimeter, area);
       this.length = length;
@@ -37,11 +37,15 @@ async function main() {
         output('This is not a square!');
         return this._isSquare = false;
       } else {
+        output('Your Rectangle is a square.')
         return this._isSquare = true;
       }
       
     }
     //Setters
+    set color(value){
+      this._color = value;
+    } 
     set length(value){
       this._length = value;
     }
@@ -51,9 +55,7 @@ async function main() {
     set isSquare(value){
       this._isSquare = value;
     }
-    set color(value){
-      this._color = value;
-    }
+
     Contain(){
 
     }
@@ -91,7 +93,7 @@ async function main() {
 
     }
   }
-  class Circle extends AbstractShape{ //ADD CIRCUMFERENCE ALIAS
+  class Circle extends AbstractShape{
     constructor(radius, circumference){
       super(color, perimeter, area);
       this.radius = radius;
@@ -146,15 +148,15 @@ async function main() {
       this.perimeter = (side*6);
       this.area = this.apothem*(this.perimeter/2);
     }
-    //Getters
+    //Getters    
+    get color(){
+      return this._color;
+    }
     get side (){
       return this._side;
     }
     get apothem (){
       return this._apothem;
-    }
-    get color(){
-      return this._color;
     }
     //Setters
     set color (value){
@@ -171,37 +173,42 @@ async function main() {
     }
   }
   //CREATE MENU
-  /* let color;
+  let color;
   let perimeter;
   let area;
-  const shapeSelector = await input("Select a Shape to Create: ");
-  for(let i = 0; i < shapeSelector; i++){
+
+  const shapeSelector = parseInt(await input("Select the shape you would like to create: 1. Rectangle, 2. Triangle, 3. Circle, 4. Hexagon, 0. To exit. "));
     switch(shapeSelector){
-      case '1':
-        const length = parseInt(await input("Length? "));
-        const width = parseInt(await input("Width? "));
-        myShape = new Rectangle(color, length, width);
-        output(`My ${myShape.color} Rectangle is ${myShape.perimeter} units around, and has an area of ${myShape.area}`)
+      case 1:
+        let length = parseInt(await input("What is your Rectangle's Length? "));
+        let width = parseInt(await input("What is your Rectangle's Width? "));
+        myShape = new Rectangle(length, width);
+        output(`Your ${myShape.color} Rectangle has a perimeter of ${myShape.perimeter} units. Has an area of ${myShape.area} units, and is square? ${myShape.isSquare}`);
         break;
-      case '2':
-        const base = await input("Base? ");
-        const height = await input("Height? ");
+      case 2:
+        let base = parseInt(await input("How wide is the base of your Triangle? "));
+        let height = parseInt(await input("How tall is your Triangle?"));
         myShape = new Triangle(base, height);
+        output(`Your Triangle has a perimeter of ${myShape.perimeter} units and has an area of ${myShape.area} units.`);
         break;
-      case '3':
+      case 3:
+        let radius = parseInt(await input("What is the radius of your circle? "));
         myShape = new Circle(radius);
+        output(`Your Circle has a circumference of ${myShape.circumference} units, an area of ${myShape.area} units, a diameter of ${myShape.diameter} units.`);
         break;
-      case '4':
+      case 4:
+        let side = parseInt(await input("How long is each side of your Hexagon? "));
         myShape = new Hexagon(side);
+        output(`Your hexagon has a perimeter of ${myShape.perimeter} units, an area of ${myShape.area} units, the distance between the center and the side is ${myShape.apothem} units.`);
         break;
-      case '0':
+      case 0:
         output ('Exit Message');
       default:
         output("Selection Invalid, Try again.");
-        continue; 
-    }*/
+    }
+  
   //... TESTERS
-  let color;
+  /* let color;
   let perimeter;
   let area;
   let myShape = new Rectangle(10, 10);
@@ -227,5 +234,5 @@ async function main() {
   //...
   output(`Testing Hexagon perimeter: ${myShape3.perimeter} units.`);
   output(`Testing Hexagon area: ${myShape3.area} units.`);
-  output(`Testing Hexagon apothem: ${myShape3.apothem} units`)
+  output(`Testing Hexagon apothem: ${myShape3.apothem} units`); */
 }
