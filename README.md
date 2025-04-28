@@ -14,3 +14,7 @@ Add your README content here.
 Program created by Shylo Edinger, instructed by Bo Cen
 ## Project Features
 This program demostrates Javascript Classes, Methods, Inheritance and Polymophism.
+### Known Issues
+Triangle class does not properly calculate the area of a triangle. Must add hypotenuse calculation, and change the properties.
+Methods for Rectangle, Triangle and Hexagon are not implemented
+Menu does not repeat, and Shapes are not stored in an array.
