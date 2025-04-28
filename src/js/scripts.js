@@ -66,7 +66,7 @@ async function main() {
       this.base = base;
       this.height = height;
       this.color = color;
-      this.perimeter = base + base + base;
+      this.perimeter = base + base + base; //FIX PROBLEM
       this.area = (base*height)/2;
     }
     //Getters
@@ -136,7 +136,10 @@ async function main() {
       this._diameter = value;
     }
     Contain(){
-      
+      let width = myShape.diameter;
+      let length = myShape.diameter;
+      let container = new Rectangle(width, length);
+      output (`The Circle is contained within a square with an area of ${container.area}units.`);
     }
   }
   class Hexagon extends AbstractShape{
@@ -168,9 +171,6 @@ async function main() {
     set apothem(value){
       this._apothem = value;
     }
-    Contain(){
-      
-    }
   }
   //CREATE MENU
   let color;
@@ -184,22 +184,26 @@ async function main() {
         let width = parseInt(await input("What is your Rectangle's Width? "));
         myShape = new Rectangle(length, width);
         output(`Your ${myShape.color} Rectangle has a perimeter of ${myShape.perimeter} units. Has an area of ${myShape.area} units, and is square? ${myShape.isSquare}`);
+        myShape.Contain();
         break;
       case 2:
         let base = parseInt(await input("How wide is the base of your Triangle? "));
         let height = parseInt(await input("How tall is your Triangle?"));
         myShape = new Triangle(base, height);
         output(`Your Triangle has a perimeter of ${myShape.perimeter} units and has an area of ${myShape.area} units.`);
+        myShape.Contain();
         break;
       case 3:
         let radius = parseInt(await input("What is the radius of your circle? "));
         myShape = new Circle(radius);
         output(`Your Circle has a circumference of ${myShape.circumference} units, an area of ${myShape.area} units, a diameter of ${myShape.diameter} units.`);
+        myShape.Contain();
         break;
       case 4:
         let side = parseInt(await input("How long is each side of your Hexagon? "));
         myShape = new Hexagon(side);
-        output(`Your hexagon has a perimeter of ${myShape.perimeter} units, an area of ${myShape.area} units, the distance between the center and the side is ${myShape.apothem} units.`);
+        output(`Your hexagon has a perimeter of ${myShape.perimeter} units, an area of ${myShape.area} units, the distance between the center and the side is ${myShape.apothem}`);
+        myShape.Contain();
         break;
       case 0:
         output ('Exit Message');

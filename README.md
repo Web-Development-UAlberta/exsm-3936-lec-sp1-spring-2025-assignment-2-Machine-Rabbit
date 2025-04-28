@@ -9,3 +9,8 @@ Use `output()` and `await input()` from `./src/js/scripts.js` to allow the user 
 To run the console, launch `./src/index.html`.
 
 Add your README content here.
+# Abstract Shape, and The Shapes.
+## Contributions
+Program created by Shylo Edinger, instructed by Bo Cen
+## Project Features
+This program demostrates Javascript Classes, Methods, Inheritance and Polymophism.
